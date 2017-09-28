@@ -221,6 +221,12 @@ namespace WooCommerceNET.WooCommerce.v1
         public string tax_class { get; set; }
 
         /// <summary>
+        /// lang class (To Support WPML)
+        /// </summary>
+        [DataMember(EmitDefaultValue = false)]
+        public string lang { get; set; }
+
+        /// <summary>
         /// Stock management at product level. Default is false.
         /// When Manage stock is checked, string value "parent" will be given, otherwise, it will be bool value false.
         /// </summary>
@@ -370,6 +376,15 @@ namespace WooCommerceNET.WooCommerce.v1
         public List<Tag> tags { get; set; }
 
         /// <summary>
+        /// Translations
+        /// </summary>
+        [DataMember(EmitDefaultValue = false)]
+        public Translation translations { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
+        public string translation_of { get; set; }
+
+        /// <summary>
         /// List of images. See Images properties
         /// </summary>
         [DataMember(EmitDefaultValue = false)]
@@ -405,6 +420,17 @@ namespace WooCommerceNET.WooCommerce.v1
         /// </summary>
         [DataMember(EmitDefaultValue = false)]
         public int? menu_order { get; set; }
+    }
+
+    [DataContract]
+    public class Translation
+    {
+        [DataMember(EmitDefaultValue = false)]
+        public int? es { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
+        public int? en { get; set; }
+
     }
 
     [DataContract]
@@ -705,7 +731,7 @@ namespace WooCommerceNET.WooCommerce.v1
         /// <summary>
         /// If the variation is virtual. Virtual variations are intangible and aren’t shipped. Default is false.
         /// </summary>
-        [DataMember(Name ="virtual", EmitDefaultValue = false)]
+        [DataMember(Name = "virtual", EmitDefaultValue = false)]
         public bool? _virtual { get; set; }
 
         /// <summary>
